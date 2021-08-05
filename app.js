@@ -28,6 +28,32 @@ app.get("/add", (request, response) => {
     })
 })
 
+app.get("/find", (request, response) => {
+    postmodel.find({ name: "Bilal" }, (error, data) => {
+        if (error) {
+            console.log(error.message)
+        }
+        else {
+            response.send(data)
+            console.log(data)
+        }
+    })
+})
+
+
+app.get("/delete", (request, response) => {
+    postmodel.deleteMany({ name: "Bilal" }, (error, data) => {
+        if (error) {
+            console.log(error.message)
+        }
+        else {
+            response.send(data)
+            console.log(data)
+        }
+    })
+})
+
+
 
 
 // Middleware
