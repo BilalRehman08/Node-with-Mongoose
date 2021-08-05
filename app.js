@@ -18,16 +18,6 @@ mongoose.connection.on("error", () => console.log(`Error: ${error.message}`))
 
 
 
-
-
-
-
-
-
-
-
-
-
 // Middleware
 app.use("/", (request, response, next) => {
     const condition = false
