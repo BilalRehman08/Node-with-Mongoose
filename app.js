@@ -4,6 +4,7 @@ const app = express()
 const port = 5000;
 const postmodel = require("./schema")
 
+
 const mongoose = require("mongoose")
 mongoose.connect("mongodb+srv://admin:admin@cluster0.wmqa3.mongodb.net/user",
     {
@@ -16,6 +17,7 @@ mongoose.connection.on("connected", () => console.log("Successfully Connected"))
 mongoose.connection.on("error", () => console.log(`Error: ${error.message}`))
 
 
+// Add
 app.get("/add", (request, response) => {
     postmodel.create({ name: "Bilal", number: "03442898491" }, (error, data) => {
         if (error) {
@@ -28,6 +30,7 @@ app.get("/add", (request, response) => {
     })
 })
 
+// Find
 app.get("/find", (request, response) => {
     postmodel.find({ name: "Bilal" }, (error, data) => {
         if (error) {
@@ -40,6 +43,7 @@ app.get("/find", (request, response) => {
     })
 })
 
+// Update
 app.get("/update", (request, response) => {
     postmodel.findOneAndUpdate({ name: "Bilal" }, { name: "Ali" }, (error, data) => {
         if (error) {
@@ -52,6 +56,7 @@ app.get("/update", (request, response) => {
     })
 })
 
+// Delete
 app.get("/delete", (request, response) => {
     postmodel.deleteMany({ name: "Bilal" }, (error, data) => {
         if (error) {
@@ -63,7 +68,6 @@ app.get("/delete", (request, response) => {
         }
     })
 })
-
 
 
 
@@ -82,6 +86,5 @@ app.use("/", (request, response, next) => {
 app.get("/", (request, response) => {
     response.send("Home Page")
 })
-
 
 app.listen(port, () => console.log(`My server is running on port: ${port}`))
