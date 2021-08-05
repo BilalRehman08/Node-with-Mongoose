@@ -14,7 +14,7 @@ mongoose.connect("mongodb+srv://admin:admin@cluster0.wmqa3.mongodb.net/user",
 
 
 mongoose.connection.on("connected", () => console.log("Successfully Connected"))
-mongoose.connection.on("error", () => console.log(`Error: ${error.message}`))
+mongoose.connection.on("error", () => console.log(`Not Connected`))
 
 
 // Add
