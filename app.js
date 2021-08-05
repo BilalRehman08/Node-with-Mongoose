@@ -2,7 +2,7 @@ const { request, response } = require("express");
 const express = require("express")
 const app = express()
 const port = 5000;
-
+const postmodel = require("./schema")
 
 const mongoose = require("mongoose")
 mongoose.connect("mongodb+srv://admin:admin@cluster0.wmqa3.mongodb.net/user",
@@ -15,6 +15,18 @@ mongoose.connect("mongodb+srv://admin:admin@cluster0.wmqa3.mongodb.net/user",
 mongoose.connection.on("connected", () => console.log("Successfully Connected"))
 mongoose.connection.on("error", () => console.log(`Error: ${error.message}`))
 
+
+app.get("/add", (request, response) => {
+    postmodel.create({ name: "Bilal", number: "03442898491" }, (error, data) => {
+        if (error) {
+            console.log(error.message)
+        }
+        else {
+            response.send(data)
+            console.log(data)
+        }
+    })
+})
 
 
 
