@@ -40,6 +40,17 @@ app.get("/find", (request, response) => {
     })
 })
 
+app.get("/update", (request, response) => {
+    postmodel.findOneAndUpdate({ name: "Bilal" }, { name: "Ali" }, (error, data) => {
+        if (error) {
+            console.log(error.message)
+        }
+        else {
+            response.send(data)
+            console.log(data)
+        }
+    })
+})
 
 app.get("/delete", (request, response) => {
     postmodel.deleteMany({ name: "Bilal" }, (error, data) => {
